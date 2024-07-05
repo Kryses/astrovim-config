@@ -68,8 +68,8 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs
-        ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        ["[b"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<S-h>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+        ["<S-l>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bd"] = {
@@ -79,14 +79,6 @@ return {
             )
           end,
           desc = "Close buffer from tabline",
-        },
-        ["<S-h>"] = {
-          function() buffer.nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
-          desc = "Previous buffer",
-        },
-        ["<S-l"] = {
-          function() buffer.nav(vim.v.count > 0 and vim.v.count or 1) end,
-          desc = "Next buffer",
         },
         ["<A-J>"] = { "i<CR><Esc>" },
         ["J"] = { "mzJ`z" },
