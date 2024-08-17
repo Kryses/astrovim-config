@@ -9,8 +9,11 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.ps1" },
   { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.ansible" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
+  { import = "astrocommunity.editing-support.chatgpt-nvim" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
   -- { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
 
   -- example of importing a plugin, comment out to use it or add your own
