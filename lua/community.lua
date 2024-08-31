@@ -6,5 +6,20 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.git.octo-nvim" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.git.neogit" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.lua" },
+  { import = "astrocommunity.pack.ps1" },
+  { import = "astrocommunity.pack.toml" },
+  { import = "astrocommunity.pack.ansible" },
+  { import = "astrocommunity.workflow.bad-practices-nvim" },
+  { import = "astrocommunity.motion.harpoon" },
+  { import = "astrocommunity.editing-support.chatgpt-nvim" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.motion.leap-nvim" },
+  { import = "astrocommunity.workflow.hardtime-nvim" },
   -- import/override with your plugins folder
 }
