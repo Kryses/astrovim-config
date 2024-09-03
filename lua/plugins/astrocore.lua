@@ -86,37 +86,6 @@ return {
           desc = "Load Project",
         },
 
-        -- Chat GPT
-        ["<leader>a"] = { desc = "󰭹 Chat GPT" },
-        ["<leader>ap"] = { "<cmd>ChatGPT<cr>", desc = "Chat GPT Prompt" },
-        ["<leader>ac"] = { "<cmd>ChatGPTCompleteCode<cr>", desc = "Complete Code" },
-        ["<leader>aa"] = { "<cmd>ChatGPTActAs<cr>", desc = "Chat GPT Act As" },
-        ["<leader>ae"] = { "<cmd>ChatGPTRun explain_code<cr>", desc = "Explain Code" },
-        ["<leader>as"] = { "<cmd>ChatGPTRun summarize_code<cr>", desc = "Summarize Code" },
-        ["<leader>af"] = { "<cmd>ChatGPTRun fix_bugs<cr>", desc = "Fix Bugs" },
-        ["<leader>ao"] = { "<cmd>ChatGPTRun optimize_code<cr>", desc = "Optimize Code" },
-        ["<leader>ar"] = { "<cmd>ChatGPTRun code_readability_analysis<cr>", desc = "Code Readability Analysis" },
-        ["<leader>at"] = { "<cmd>ChatGPTRun add_tests<cr>", desc = "Add Tests" },
-        ["<leader>ad"] = { "<cmd>ChatGPTRun docstring<cr>", desc = "Add Docstring" },
-        ["<leader>ai"] = { "<cmd>ChatGPTEditWithInstructions<cr>", desc = "Edit with Instructions" },
-
-        -- Obsidian
-        ["<leader>z"] = { desc = " Obsidian" },
-        ["<leader>zs"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = "Quick Switch" },
-        ["<leader>zf"] = { "<cmd>ObsidianFollowLink<cr>", desc = "Follow Link" },
-        ["<leader>zo"] = { "<cmd>:ObsidianOpen", desc = "Open" },
-        ["<leader>zn"] = { "<cmd>:ObsidianNew", desc = "New" },
-        ["<leader>zb"] = { "<cmd>:ObsidianBacklinks<cr>", desc = "Backlinks" },
-        ["<leader>zT"] = { "<cmd>:ObsidianTags ", desc = "Tags" },
-        ["<leader>zt"] = { "<cmd>:ObsidianTomorrow<cr>", desc = "Tomorrow" },
-        ["<leader>zy"] = { "<cmd>:ObsidianYesterday<cr>", desc = "Yesterday" },
-        ["<leader>zi"] = { "<cmd>:ObsidianTemplate ", desc = "Template" },
-        ["<leader>zS"] = { "<cmd>:ObsidianSearch ", desc = "Search" },
-        ["<leader>zl"] = { "<cmd>:ObsidianLink ", desc = "Link" },
-        ["<leader>zN"] = { "<cmd>:ObsidianLinkNew ", desc = "Link New" },
-        ["<leader>zw"] = { "<cmd>:ObsidianWorkspace<cr>", desc = "Workspace" },
-
-
         -- mappings seen under group name "Buffer"
         ["<leader>bD"] = {
           function()
