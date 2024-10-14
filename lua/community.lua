@@ -17,14 +17,15 @@ return {
   { import = "astrocommunity.pack.ps1" },
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.ansible" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.editing-support.chatgpt-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
-  { import = "astrocommunity.workflow.hardtime-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
+  { import = "astrocommunity.editing-support.refactoring-nvim" },
 
   -- import/override with your plugins folder
 }
