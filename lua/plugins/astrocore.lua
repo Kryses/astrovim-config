@@ -85,6 +85,11 @@ return {
           "<cmd> lua require('nvim-dap-projects').search_project_config() <cr>",
           desc = "Load Project",
         },
+        ["<C-h>"] = { "<cmd><C-U>TmuxNavigateLeft<cr>" },
+        ["<C-j>"] = { "<cmd>>TmuxNavigateDown" },
+        ["<C-k>"] = { "<cmd>>TmuxNavigateUp<cr>" },
+        ["<C-l>"] = { "<cmd><C-U>TmuxNavigateRight<cr>" },
+        ["<C-\\>"] = { "<cmd><C-U>TmuxNavigatePrevious<cr>" },
 
         -- mappings seen under group name "Buffer"
         ["<leader>bD"] = {
