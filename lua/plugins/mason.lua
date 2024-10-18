@@ -9,7 +9,6 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
-        "pyright",
         -- add more arguments for adding more language servers
       },
     },
@@ -21,10 +20,8 @@ return {
     opts = {
       ensure_installed = {
         "stylua",
-        "black",
         "ruff",
         "prettier",
-        "mypy"
         -- add more arguments for adding more null-ls sources
       },
     },

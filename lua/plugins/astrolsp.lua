@@ -44,6 +44,24 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      ruff = {
+        root_dir = function()
+          local current_dir = vim.fn.getcwd()
+            return current_dir
+        end,
+      },
+      pyright = {
+        root_dir = function()
+          local current_dir = vim.fn.getcwd()
+            return current_dir
+        end,
+      },
+      basedpyright = {
+        root_dir = function()
+          local current_dir = vim.fn.getcwd()
+            return current_dir
+        end,
+      },
     },
     -- customize how language servers are attached
     handlers = {
