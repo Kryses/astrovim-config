@@ -44,6 +44,12 @@ return {
     ---@diagnostic disable: missing-fields
     config = {
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      nu = {
+        cmd = {"nu", "--lsp"},
+        filetypes = { "nu" },
+        root_dir = require("lspconfig.util").find_git_ancestor,
+        single_file_support = true,
+      },
       ruff = {
         root_dir = function()
           local current_dir = vim.fn.getcwd()
