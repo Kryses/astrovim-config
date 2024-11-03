@@ -18,6 +18,7 @@ return {
   { import = "astrocommunity.pack.toml" },
   { import = "astrocommunity.pack.ansible" },
   { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.editing-support.chatgpt-nvim" },
