@@ -4,7 +4,7 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    {"nushel/tree-sitter-nu", build=":TSUpdate nu"}
+    {"nushell/tree-sitter-nu", build=":TSUpdate nu"}
   },
   opts = {
     ensure_installed = {
