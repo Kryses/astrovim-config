@@ -14,26 +14,26 @@ return {
       opts = {
         mappings = {
           n = {
-            ["<leader>N"] = { desc = "  Notes" },
-            ["<leader>Nn"] = { "<cmd>ObsidianNew<cr>", desc = "󰎚 New Note" },
-            ["<leader>NC"] = { "<cmd>ObsidianTOC<cr>", desc = "󰠶 Table of Contents" },
-            ["<leader>Nc"] = { "<cmd>ObsidianToggleCheckbox<cr>", desc = " Toggle Check" },
-            ["<leader>No"] = { "<cmd>ObsidianOpen<cr>", desc = "󰏕 Open in Obsidian" },
-            ["<leader>NS"] = { "<cmd>ObsidianSearch<cr>", desc = "󰍉 Search" },
-            ["<leader>Ns"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = " Switch" },
-            ["<leader>Nt"] = { "<cmd>ObsidianToday<cr>", desc = "󰃶 Today" },
-            ["<leader>NT"] = { "<cmd>ObsidianTags<cr>", desc = " Tags" },
-            ["<leader>Nd"] = { "<cmd>ObsidianDailies<cr>", desc = " Dailies" },
-            ["<leader>Nl"] = { "<cmd>ObsidianLink<cr>", desc = " Link" },
-            ["<leader>Nb"] = { "<cmd>ObsidianBacklinks<cr>", desc = "󰌍 Back Links" },
-            ["<leader>NL"] = { "<cmd>ObsidianLinks<cr>", desc = " Links" },
-            ["<leader>Nr"] = { "<cmd>ObsidianRename<cr>", desc = "󰑕 Rename" },
-            ["<leader>Np"] = { "<cmd>ObsidianPasteImg<cr>", desc = " Paste Image" },
-            ["<leader>NN"] = { desc = " New..." },
-            ["<leader>NNl"] = { "<cmd>ObsidianLinkNew<cr>", desc = "󱄀 New Link" },
-            ["<leader>NNt"] = { "<cmd>ObsidianTemplate<cr>", desc = " Template" },
-            ["<leader>NNe"] = { "<cmd>ObsidianExtractNote<cr>", desc = " Extract Note" },
-            ["<leader>NNN"] = { "<cmd>ObsidianNewFromTemplate<cr>", desc = "  New From Template" },
+            ["<leader>i"] = { desc = "  Notes" },
+            ["<leader>in"] = { "<cmd>ObsidianNew<cr>", desc = "󰎚 New Note" },
+            ["<leader>iC"] = { "<cmd>ObsidianTOC<cr>", desc = "󰠶 Table of Contents" },
+            ["<leader>ic"] = { "<cmd>ObsidianToggleCheckbox<cr>", desc = " Toggle Check" },
+            ["<leader>io"] = { "<cmd>ObsidianOpen<cr>", desc = "󰏕 Open in Obsidian" },
+            ["<leader>iS"] = { "<cmd>ObsidianSearch<cr>", desc = "󰍉 Search" },
+            ["<leader>is"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = " Switch" },
+            ["<leader>it"] = { "<cmd>ObsidianToday<cr>", desc = "󰃶 Today" },
+            ["<leader>iT"] = { "<cmd>ObsidianTags<cr>", desc = " Tags" },
+            ["<leader>id"] = { "<cmd>ObsidianDailies<cr>", desc = " Dailies" },
+            ["<leader>il"] = { "<cmd>ObsidianLink<cr>", desc = " Link" },
+            ["<leader>ib"] = { "<cmd>ObsidianBacklinks<cr>", desc = "󰌍 Back Links" },
+            ["<leader>iL"] = { "<cmd>ObsidianLinks<cr>", desc = " Links" },
+            ["<leader>ir"] = { "<cmd>ObsidianRename<cr>", desc = "󰑕 Rename" },
+            ["<leader>ip"] = { "<cmd>ObsidianPasteImg<cr>", desc = " Paste Image" },
+            ["<leader>iN"] = { desc = " New..." },
+            ["<leader>iNl"] = { "<cmd>ObsidianLinkNew<cr>", desc = "󱄀 New Link" },
+            ["<leader>iNt"] = { "<cmd>ObsidianTemplate<cr>", desc = " Template" },
+            ["<leader>iNe"] = { "<cmd>ObsidianExtractNote<cr>", desc = " Extract Note" },
+            ["<leader>iNN"] = { "<cmd>ObsidianNewFromTemplate<cr>", desc = "  New From Template" },
             ["gf"] = {
               function()
                 if require("obsidian").util.cursor_on_markdown_link() then
@@ -62,8 +62,21 @@ return {
       subdir = "99 - Meta/templates",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
+      substitutions = {
+        yesterday = function()
+          return os.date("%Y-%m-%d", os.time() - 86400)
+        end,
+        today= function()
+          return os.date("%Y-%m-%d", os.time())
+        end,
+        tomorrow = function()
+          return os.date("%Y-%m-%d", os.time() + 86400)
+        end,
+        current_day = function()
+          return os.date("%A", os.time())
+        end,
+        },
     },
-
     note_frontmatter_func = function(note)
       -- This is equivalent to the default frontmatter function.
       local out = { id = note.id, aliases = note.aliases, tags = note.tags }
