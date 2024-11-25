@@ -77,10 +77,6 @@ return {
         ["<leader>k"] = { "<cmd>lnext<cr>zz", desc = "Next Location List" },
         ["<leader>j"] = { "<cmd>lprev<cr>zz", desc = "Previous Location List" },
         ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Substitute Current" },
-        ["<leader>fp"] = {
-          "<cmd> lua require('telescope').extensions.projects.projects() <cr>",
-          desc = "Find Projects",
-        },
         ["<leader>lp"] = {
           "<cmd> lua require('nvim-dap-projects').search_project_config() <cr>",
           desc = "Load Project",

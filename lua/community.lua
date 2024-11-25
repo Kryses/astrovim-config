@@ -27,6 +27,7 @@ return {
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
+  { import = "astrocommunity.project.projectmgr-nvim" },
 
   -- import/override with your plugins folder
 }
