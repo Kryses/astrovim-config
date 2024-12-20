@@ -22,6 +22,7 @@ return {
         "stylua",
         "ruff",
         "prettier",
+        "mypy"
         -- add more arguments for adding more null-ls sources
       },
     },

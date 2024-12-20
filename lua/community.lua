@@ -21,7 +21,6 @@ return {
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
-  { import = "astrocommunity.editing-support.chatgpt-nvim" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
