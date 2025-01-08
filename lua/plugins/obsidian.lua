@@ -45,6 +45,10 @@ return {
               desc = "Obsidian Follow Link",
             },
           },
+          v = {
+            ["<leader>i"] = { desc = "  Notes" },
+            ["<leader>ie"] = { "<cmd>ObsidianExtractNote<cr>", desc = " Extract Note" },
+          },
         },
       },
     },
