@@ -22,12 +22,14 @@ return {
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
-  { import = "astrocommunity.note-taking.obsidian-nvim" },
-  { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
   { import = "astrocommunity.terminal-integration.vim-tmux-yank" },
   { import = "astrocommunity.editing-support.refactoring-nvim" },
   { import = "astrocommunity.project.projectmgr-nvim" },
+  { import = "astrocommunity.motion.mini-ai" },
+  { import = "astrocommunity.motion.mini-surround" },
+  { import = "astrocommunity.motion.mini-bracketed" },
+  { import = "astrocommunity.editing-support.mini-operators" },
 
   -- import/override with your plugins folder
 }

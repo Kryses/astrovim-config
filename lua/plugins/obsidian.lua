@@ -21,17 +21,16 @@ return {
             ["<leader>io"] = { "<cmd>ObsidianOpen<cr>", desc = "󰏕 Open in Obsidian" },
             ["<leader>iS"] = { "<cmd>ObsidianSearch<cr>", desc = "󰍉 Search" },
             ["<leader>is"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = " Switch" },
-            ["<leader>it"] = { "<cmd>ObsidianToday<cr>", desc = "󰃶 Today" },
+            ["<leader>it"] = { "<cmd>ObsidianTemplate<cr>", desc = " Template" },
+            ["<leader>ia"] = { "<cmd>ObsidianToday<cr>", desc = "󰃶 Today" },
             ["<leader>iT"] = { "<cmd>ObsidianTags<cr>", desc = " Tags" },
             ["<leader>id"] = { "<cmd>ObsidianDailies<cr>", desc = " Dailies" },
-            ["<leader>il"] = { "<cmd>ObsidianLink<cr>", desc = " Link" },
             ["<leader>ib"] = { "<cmd>ObsidianBacklinks<cr>", desc = "󰌍 Back Links" },
             ["<leader>iL"] = { "<cmd>ObsidianLinks<cr>", desc = " Links" },
             ["<leader>ir"] = { "<cmd>ObsidianRename<cr>", desc = "󰑕 Rename" },
             ["<leader>ip"] = { "<cmd>ObsidianPasteImg<cr>", desc = " Paste Image" },
             ["<leader>iN"] = { desc = " New..." },
             ["<leader>iNl"] = { "<cmd>ObsidianLinkNew<cr>", desc = "󱄀 New Link" },
-            ["<leader>iNt"] = { "<cmd>ObsidianTemplate<cr>", desc = " Template" },
             ["<leader>iNe"] = { "<cmd>ObsidianExtractNote<cr>", desc = " Extract Note" },
             ["<leader>iNN"] = { "<cmd>ObsidianNewFromTemplate<cr>", desc = "  New From Template" },
             ["gf"] = {
@@ -48,6 +47,7 @@ return {
           v = {
             ["<leader>i"] = { desc = "  Notes" },
             ["<leader>ie"] = { "<cmd>ObsidianExtractNote<cr>", desc = " Extract Note" },
+            ["<leader>il"] = { "<cmd>ObsidianLink<cr>", desc = " Link" },
           },
         },
       },
@@ -57,29 +57,22 @@ return {
     dir = vim.env.HOME .. "/krys-brain", -- specify the vault location. no need to call 'vim.fn.expand' here
     use_advanced_uri = true,
     finder = "telescope.nvim",
-    new_notes_location = "05 - Fleeting",
+    new_notes_location = "00_inbox",
     daily_notes = {
-      folder = "06 - Daily/daily",
+      folder = "04_journal/daily",
       date_format = "%Y-%m-%d",
     },
     templates = {
-      subdir = "99 - Meta/templates",
+      subdir = "99_templates",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
       substitutions = {
-        yesterday = function()
-          return os.date("%Y-%m-%d", os.time() - 86400)
-        end,
-        today= function()
-          return os.date("%Y-%m-%d", os.time())
-        end,
-        tomorrow = function()
-          return os.date("%Y-%m-%d", os.time() + 86400)
-        end,
-        current_day = function()
-          return os.date("%A", os.time())
-        end,
-        },
+        yesterday = function() return os.date("%Y-%m-%d", os.time() - 86400) end,
+        today = function() return os.date("%Y-%m-%d", os.time()) end,
+        tomorrow = function() return os.date("%Y-%m-%d", os.time() + 86400) end,
+        current_day = function() return os.date("%A", os.time()) end,
+        note_id = function() return os.date("%Y-%m-%d-%H-%M-%S", os.time()) end,
+      },
     },
     note_frontmatter_func = function(note)
       -- This is equivalent to the default frontmatter function.
@@ -93,14 +86,63 @@ return {
       end
       return out
     end,
+    -- Optional, customize how note IDs are generated given an optional title.
+    ---@param title string|?
+    ---@return string
+    note_id_func = function(title)
+      -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+      -- In this case a note with the title 'My new note' will be given an ID that looks
+      -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+      local suffix = ""
+      if title ~= nil then
+        -- If title is given, transform it into valid file name.
+        suffix = title
+      else
+        -- If title is nil, just add 4 random uppercase letters to the suffix.
+        for _ = 1, 4 do
+          suffix = suffix .. string.char(math.random(65, 90))
+        end
+      end
+      return tostring(os.time()) .. "-" .. suffix
+    end,
     disable_frontmatter = true,
     nvim_completiom = {
       nvim_cmp = true,
       min_chars = 2,
     },
-
+    -- Optional, customize how note file names are generated given the ID, target directory, and title.
+    ---@param spec { id: string, dir: obsidian.Path, title: string|? }
+    ---@return string|obsidian.Path The full path to the new note.
+    note_path_func = function(spec)
+      -- This is equivalent to the default behavior.
+      local path = spec.dir / tostring(spec.id)
+      return path:with_suffix ".md"
+    end,
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
     follow_url_func = vim.ui.open or function(url) require("astrocore").system_open(url) end,
+    ---@param img string
+    follow_img_func = function(img)
+      -- vim.fn.jobstart { "qlmanage", "-p", img } -- Mac OS quick look preview
+      vim.fn.jobstart { "feh", img } -- linux
+      -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
+    end,
+    attachments = {
+      img_folder = "98_attachments/images",
+
+      ---@return string
+      img_name_func = function()
+        -- Prefix image names with timestamp.
+        return string.format("%s-", os.time())
+      end,
+      ---@param client obsidian.Client
+      ---@param path obsidian.Path the absolute path to the image file
+      ---@return string
+      ---
+      img_text_func = function(client, path)
+        path = client:vault_relative_path(path) or path
+        return string.format("![[%s]]", path)
+      end,
+    },
   },
 }
