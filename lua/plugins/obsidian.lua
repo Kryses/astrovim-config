@@ -63,7 +63,7 @@ return {
       date_format = "%Y-%m-%d",
     },
     templates = {
-      subdir = "99_templates",
+      subdir = "99_templates/nvim",
       date_format = "%Y-%m-%d-%a",
       time_format = "%H:%M",
       substitutions = {
