@@ -20,6 +20,8 @@ return {
   { import = "astrocommunity.pack.ansible" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.nix" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.snippet.mini-snippets" },
   { import = "astrocommunity.workflow.bad-practices-nvim" },
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.terminal-integration.vim-tmux-navigator" },
@@ -30,6 +32,7 @@ return {
   { import = "astrocommunity.motion.mini-surround" },
   { import = "astrocommunity.motion.mini-bracketed" },
   { import = "astrocommunity.editing-support.mini-operators" },
+  { import = "astrocommunity.editing-support.auto-save-nvim" },
 
   -- import/override with your plugins folder
 }

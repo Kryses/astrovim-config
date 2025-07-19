@@ -77,17 +77,32 @@ return {
         -- ['<C-j>'] = {'<cmd>cprev<cr>zz'},
         ["<leader>k"] = { "<cmd>lnext<cr>zz", desc = "Next Location List" },
         ["<leader>j"] = { "<cmd>lprev<cr>zz", desc = "Previous Location List" },
-        ["<leader>s"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Substitute Current" },
         ["<leader>lp"] = {
           "<cmd> lua require('nvim-dap-projects').search_project_config() <cr>",
           desc = "Load Project",
         },
-        ["<C-h>"] = { "<cmd><C-U>TmuxNavigateLeft<cr>" },
-        ["<C-j>"] = { "<cmd>>TmuxNavigateDown" },
-        ["<C-k>"] = { "<cmd>>TmuxNavigateUp<cr>" },
-        ["<C-l>"] = { "<cmd><C-U>TmuxNavigateRight<cr>" },
-        ["<C-\\>"] = { "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        ["<C-h>"] = { "<cmd>TmuxNavigateLeft<cr>" },
+        ["<C-j>"] = { "<cmd>TmuxNavigateDown<cr>" },
+        ["<C-k>"] = { "<cmd>TmuxNavigateUp<cr>" },
+        ["<C-l>"] = { "<cmd>TmuxNavigateRight<cr>" },
+        ["<C-\\>"] = { "<cmd>TmuxNavigatePrevious<cr>" },
 
+        ["<Leader>ff"] = {
+            function()
+              require("snacks").picker.files {
+                hidden = false,
+                ignored = true,
+              }
+            end,
+          desc = "Find files"},
+        ["<Leader>fw"] = {
+            function()
+              require("snacks").picker.grep {
+                hidden = false,
+                ignored = true,
+              }
+            end,
+          desc = "Find words (kryses)"},
         -- mappings seen under group name "Buffer"
         ["<leader>bD"] = {
           function()

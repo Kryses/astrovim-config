@@ -7,32 +7,11 @@ return {
     provider = "ollama",
     use_absolute_path = true,
     auto_suggestions_provider = "ollama",
-    vendors = {
-      ---@type AvanteProvider
+    providers = {
       ollama = {
-        api_key_name = "",
-        endpoint = "http://localhost:11434/v1",
+        endpoint = "http://localhost:11434",
         model = "sammcj/qwen2.5-coder-7b-instruct:q8_0",
-        parse_curl_args = function(opts, code_opts)
-          return {
-            url = opts.endpoint .. "/chat/completions",
-            headers = {
-              ["Accept"] = "application/json",
-              ["Content-Type"] = "application/json",
-              ["x-api-key"] = "ollama",
-            },
-            body = {
-              model = opts.model,
-              messages = require("avante.providers").copilot.parse_messages(code_opts), -- you can make your own message, but this is very advanced
-              max_tokens = 40960,
-              stream = true,
-            },
-          }
-        end,
-        parse_response_data = function(data_stream, event_state, opts)
-          require("avante.providers").openai.parse_response(data_stream, event_state, opts)
-        end,
-      },
+      }
     },
     behaviour = {
       auto_suggestions = false, -- Experimental stage
